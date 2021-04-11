@@ -1,5 +1,25 @@
 {
   "dependencies": {
-    "read-excel-file": "^5.0.0"
+    "aws-sdk": "^2.880.0",
+    "exceljs": "^4.2.1",
+    "fs-extra": "^9.1.0"
+  },
+  "name": "excel-poc",
+  "description": "excel parser & transformation proof of concept",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-ww:ww-diego-raffaeli/excel-poc.git"
+  },
+  "author": "Diego Raffaeli",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "sinon": "^10.0.0"
   }
 }
