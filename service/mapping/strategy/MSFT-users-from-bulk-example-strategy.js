@@ -2,11 +2,7 @@
 
 const User = require('../../model/out/user')
 
-const name = 'users_from_bulk_example'
-const sheets = ['Users']
-
-// expected headers
-// "Email","First Name","Last Name","Role","Status","Organization","Business Process"
+// expected headers TODO extract to another file
 const EMAIL = "Email"
 const FIRST_NAME = "First Name"
 const LAST_NAME = "Last Name"
@@ -15,8 +11,11 @@ const STATUS = "Status"
 const ORGANIZATION = "Organization"
 const BUSINESS_PROCESS = "Business Process"
 
-//
+// company name
 const COMPANY_NAME = "Microsoft"
+
+const name = 'users_from_bulk_example'
+const sheets = ['Users']
 
 function apply(content) {
 
@@ -31,22 +30,22 @@ function apply(content) {
 
     return rows.slice(2)
         .map(row => mapLine(rowHeaders, row))
-        .map(line => mapUser(line))
+        .map(line => mapEntity(line))
 }
 
-function mapLine(rowHeaders,rawRow) {
-    const fields = []
+function mapLine(rowHeaders, rawRow) {
+    const line = {}
     for (let i = 0; i < rowHeaders.length; i++) {
-        fields.push({name: rowHeaders[i], value: rawRow[i]})
+        line[rowHeaders[i]] = rawRow[i]
     }
 
-    return fields
+    return line
 }
 
-function mapUser(line) {
-    const email = line.find(item => item.name === EMAIL).value
-    const firstName = line.find(item => item.name === FIRST_NAME).value
-    const lastName = line.find(item => item.name === LAST_NAME).value
+function mapEntity(line) {
+    const email = line[EMAIL]
+    const firstName = line[FIRST_NAME]
+    const lastName = line[LAST_NAME]
     //const role = line.find(item => item.name === ROLE).value
     //const status = line.find(item => item.name === STATUS).value
     //const organization = line.find(item => item.name === ORGANIZATION).value

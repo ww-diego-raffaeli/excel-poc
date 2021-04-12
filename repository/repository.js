@@ -23,10 +23,12 @@ async function retrieve(target) {
     console.log(`Retrieving file "${fileName}" from ${origin}`)
     const fileContent = await repoStrategy[origin].retrieve(fileName, sheets)
 
-    return {
+    const file = {
         fileName: fileName,
         content: fileContent
     }
+
+    return file
 }
 
 

@@ -1,11 +1,13 @@
 // input-conf.js
 
 const FileName = {
-    MICROSOFT_EXAMPLE_FILE: 'Example Batch Upload File - Microsoft Only.xlsx'
+    MICROSOFT_EXAMPLE_FILE: 'Example Batch Upload File - Microsoft Only.xlsx',
+    FINANCE_PIA_91119: 'Finance Privacy PIA 9.11.19 Data Mapping.xlsx'
 }
 
 const ExtractionStrategy = {
-    USERS_FROM_BULK: 'users_from_bulk_example'
+    USERS_FROM_BULK: 'users_from_bulk_example',
+    MSFT_FINANCE_ASSESSMENTS: 'MSFT-Finance_assessments_extraction'
 }
 
 const Origin = {
@@ -19,6 +21,8 @@ const userTargets = [
 
 const attachmentTargets = []
 
-const assessmentTargets = []
+const assessmentTargets = [
+    {source: {fileName: FileName.FINANCE_PIA_91119, origin: Origin.LOCAL}, strategy: ExtractionStrategy.MSFT_FINANCE_ASSESSMENTS}
+]
 
 module.exports = { userTargets, attachmentTargets, assessmentTargets }

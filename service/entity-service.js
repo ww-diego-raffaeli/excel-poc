@@ -1,4 +1,4 @@
-// user-service.js
+// entity-service.js
 
 const repository = require('../repository').repository
 const mapper = require('./mapping').mapper

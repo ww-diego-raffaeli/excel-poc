@@ -1,1 +1,5 @@
 // attachment.js
+
+class Attachment {
+
+}

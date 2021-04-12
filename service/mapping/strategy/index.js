@@ -1,9 +1,11 @@
 // index.js
 
-const MSFTUsersfromBulkExampleStrategy = require('./MSFT-users-from-bulk-example-strategy')
+const MSFTUsersFromBulkExampleStrategy = require('./MSFT-users-from-bulk-example-strategy')
+const MSFTFinanceAssessmentsExtraction = require('./MSFT-Finance-assessments-extraction-strategy')
 
 const strategiesByName = {
-    [MSFTUsersfromBulkExampleStrategy.name]: MSFTUsersfromBulkExampleStrategy
+    [MSFTUsersFromBulkExampleStrategy.name]: MSFTUsersFromBulkExampleStrategy,
+    [MSFTFinanceAssessmentsExtraction.name]: MSFTFinanceAssessmentsExtraction
 }
 
 module.exports = {strategiesByName}
