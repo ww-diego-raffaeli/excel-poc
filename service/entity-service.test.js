@@ -29,7 +29,7 @@ test('fetch -> targets, return transformed data ', () => {
     const targetSheetsStub = sandbox.stub(mapper, "targetSheets")
     targetSheetsStub.withArgs("some_strategy_1").returns(sheets)
     const retrieveStub = sandbox.stub(repository, "retrieve")
-    retrieveStub.withArgs({fileName: "some_excel.xls", origin: "local", sheets: sheets}).returns(file1)
+    retrieveStub.withArgs("some_excel.xls", "local", sheets).returns(file1)
     const mapStub = sandbox.stub(mapper, "map")
     mapStub.withArgs({fileName: "some_excel.xls", content: file1.content, strategy: "some_strategy_1"}).returns("firstTargetTransformedData")
 
@@ -38,10 +38,9 @@ test('fetch -> targets, return transformed data ', () => {
 
     // assertions
     actualResponse.then(value => {
-        expect(value).resolves.toEqual(["firstTargetTransformedData"])
+        expect(value).toEqual(["firstTargetTransformedData"])
+        sinon.assert.calledOnce(targetSheetsStub)
+        sinon.assert.calledOnce(retrieveStub)
+        sinon.assert.calledOnce(mapStub)
     })
-
-    sinon.assert.calledOnce(targetSheetsStub)
-    sinon.assert.calledOnce(retrieveStub)
-    // TODO: fix sinon.assert.calledOnce(mapStub)
 })

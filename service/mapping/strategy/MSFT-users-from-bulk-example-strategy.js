@@ -52,7 +52,7 @@ function mapEntity(line) {
     //const business_process = line.find(item => item.name === BUSINESS_PROCESS).value
 
     const user = new User(email, firstName, lastName, COMPANY_NAME)
-    console.log("User" + JSON.stringify(user) + " mapped from " + JSON.stringify(line))
+    console.log("Entity mapped " + JSON.stringify(user))
 
     return user
 }

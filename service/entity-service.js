@@ -4,8 +4,6 @@ const repository = require('../repository').repository
 const mapper = require('./mapping').mapper
 
 async function fetch(targets) {
-    console.log("Fetching " + JSON.stringify(targets))
-
     // fetch data & transform
     const results = await Promise.all(targets.map(target => mapTarget(target)))
 
@@ -20,10 +18,9 @@ async function mapTarget(target) {
     const sheets = mapper.targetSheets(strategy)
 
     console.log(`Obtaining file content "${fileName}", sheets "${sheets}" from "${origin}" origin`)
-    const file = await repository.retrieve({fileName: fileName, origin: origin, sheets: sheets})
-    console.log(`File obtained: ${JSON.stringify(file)}`)
+    const file = await repository.retrieve(fileName, origin, sheets)
 
-    console.log("Applying transformation to " + fileName + "with " + strategy)
+    console.log("Applying transformation to '" + fileName + "' with '" + strategy + "' strategy")
     const transformedData = mapper.map({fileName: fileName, content: file.content, strategy: strategy})
     console.log("Transformation finished. Items obtained: " + transformedData.length)
 
@@ -31,6 +28,7 @@ async function mapTarget(target) {
         source: target.source,
         strategy: strategy,
         sheets: sheets,
+        input: file,
         output: transformedData
     }
 }

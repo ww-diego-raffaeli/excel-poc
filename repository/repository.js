@@ -16,11 +16,8 @@ const repoStrategy = {
 /**
  * Retrieves file content
 **/
-async function retrieve(target) {
-    const fileName = target.fileName
-    const origin = target.origin
-    const sheets = target.sheets
-    console.log(`Retrieving file "${fileName}" from ${origin}`)
+async function retrieve(fileName, origin, sheets) {
+    console.log(`Retrieving file "${fileName}" from "${origin}"`)
     const fileContent = await repoStrategy[origin].retrieve(fileName, sheets)
 
     const file = {

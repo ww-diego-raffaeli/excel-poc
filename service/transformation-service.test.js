@@ -23,8 +23,10 @@ test('transform -> user entity, return user response', () => {
     const actualResponse = service.transform(transformationRequest)
 
     // assertions
-    expect(actualResponse).resolves.toEqual([{entity: {type: "User", targets: [{source:{fileName: "some_excel.xls", origin: "local"}, strategy:"strategy_name"}]}, result: "users generated"}])
-    sinon.assert.calledOnce(fetchStub)
+    actualResponse.then(value => {
+        expect(value).toEqual([{entity: {type: "User", targets: [{source:{fileName: "some_excel.xls", origin: "local"}, strategy:"strategy_name"}]}, result: "users generated"}])
+        sinon.assert.calledOnce(fetchStub)
+    })
 } )
 
 test('transform -> request without user entity, return empty response', () => {
@@ -36,8 +38,10 @@ test('transform -> request without user entity, return empty response', () => {
     const actualResponse = service.transform(transformationRequest)
 
     // assertions
-    expect(actualResponse).resolves.toEqual([])
-    sinon.assert.notCalled(fetchStub)
+    actualResponse.then(value => {
+        expect(value[0].result).toEqual([])
+        sinon.assert.notCalled(fetchStub)
+    })
 } )
 
 

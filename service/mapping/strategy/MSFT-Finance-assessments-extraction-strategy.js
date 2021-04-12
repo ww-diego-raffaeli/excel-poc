@@ -44,7 +44,7 @@ function mapEntity(line) {
     const created = line[header.DATE_CREATED]
 
     const assessment = new Assessment(externalId, name, templateId, owner, status, respondents, reviewers, lastestUpdated, created, [])
-    console.log("Entity " + JSON.stringify(assessment) + " mapped from " + JSON.stringify(line))
+    console.log("Entity mapped " + JSON.stringify(assessment))
 
     return assessment
 
