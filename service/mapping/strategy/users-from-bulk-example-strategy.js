@@ -1,4 +1,4 @@
-// MSFT-users-from-bulk-example-strategy.js
+// users-from-bulk-example-strategy.js
 
 const User = require('../../model/out/user')
 

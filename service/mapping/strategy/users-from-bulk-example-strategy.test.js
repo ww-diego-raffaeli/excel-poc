@@ -1,4 +1,4 @@
-const strategy = require('./MSFT-users-from-bulk-example-strategy')
+const strategy = require('./users-from-bulk-example-strategy')
 
 test('apply -> content with 3 users, return 3 users', () => {
     // arrange
